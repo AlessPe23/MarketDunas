@@ -1,0 +1,2 @@
+/* Orden de capas: lo último gana. Los CSS Modules de componentes viven en "components"; las pantallas en "features". */
+@layer reset, tokens, base, components, features;

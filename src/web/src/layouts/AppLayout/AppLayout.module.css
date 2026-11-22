@@ -1,0 +1,100 @@
+@layer features {
+  .shell {
+    display: flex;
+    min-height: 100dvh;
+  }
+  .skip {
+    position: absolute;
+    left: var(--space-2);
+    top: -4rem;
+    z-index: var(--z-toast);
+    padding: var(--space-2) var(--space-3);
+    background: var(--color-bg-surface);
+    border-radius: var(--radius-sm);
+  }
+  .skip:focus {
+    top: var(--space-2);
+  }
+  .sidebar {
+    position: sticky;
+    top: 0;
+    z-index: var(--z-sidebar);
+    flex: none;
+    height: 100dvh;
+    padding: var(--space-3) var(--space-2);
+    background: var(--color-bg-surface);
+    border-right: var(--border-width) solid var(--color-border-subtle);
+    display: grid;
+    align-content: start;
+    gap: var(--space-4);
+  }
+  .expanded {
+    width: var(--sidebar-w-expanded);
+  }
+  .collapsed {
+    width: var(--sidebar-w-collapsed);
+  }
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    min-height: var(--space-8);
+    padding: 0 var(--space-1);
+  }
+  .collapsed .brand {
+    justify-content: center;
+    padding: 0;
+  }
+  .brandName {
+    font-weight: var(--weight-semibold);
+  }
+  .column {
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+  .topbar {
+    position: sticky;
+    top: 0;
+    z-index: var(--z-sidebar);
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    height: var(--topbar-h);
+    padding: 0 var(--content-gutter);
+    background: var(--color-bg-app);
+    border-bottom: var(--border-width) solid var(--color-border-subtle);
+  }
+  .crumbs {
+    flex: 1 1 auto;
+    min-width: 0;
+    color: var(--color-text-secondary);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .demoTag {
+    flex: none;
+  }
+  .main {
+    outline: none;
+  }
+  .content {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-4);
+    max-width: var(--content-max);
+    margin-inline: auto;
+    padding: var(--space-6) var(--content-gutter) var(--space-12);
+  }
+  @media (max-width: 29.9375rem) {
+    .topbar {
+      padding-inline: var(--space-3);
+    }
+    .content {
+      padding-inline: var(--space-3);
+    }
+    .demoTag {
+      display: none;
+    }
+  }
+}

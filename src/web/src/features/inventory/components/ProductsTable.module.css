@@ -1,0 +1,226 @@
+@layer features {
+  /*
+   * Desplazamiento horizontal solo si hace falta (valores extremos). overflow-y:clip evita que el contenedor sea ámbito
+   * de scroll vertical, de modo que la cabecera (sticky) sigue fija respecto a la página. Si un navegador lo trata como
+   * "hidden", la cabecera deja de ser fija sin perder contenido.
+   */
+  .scroller {
+    position: relative; /* contiene los textos .sr-only (absolutos) para que no ensanchen el documento */
+    overflow-x: auto;
+    overflow-y: clip;
+  }
+  .table {
+    width: 100%;
+    min-width: 40rem;
+    border-collapse: separate;
+    border-spacing: 0;
+    font-size: var(--text-sm);
+    line-height: var(--leading-sm);
+  }
+  .table th {
+    position: sticky;
+    top: var(--topbar-h);
+    z-index: var(--z-sticky);
+    height: 2.25rem;
+    padding: 0 var(--space-3);
+    background: var(--color-bg-subtle);
+    border-bottom: var(--border-width) solid var(--color-border-subtle);
+    color: var(--color-text-muted);
+    font-size: var(--text-xs);
+    line-height: var(--leading-xs);
+    font-weight: var(--weight-medium);
+    text-align: left;
+    white-space: nowrap;
+  }
+  .table td {
+    height: var(--row-h);
+    padding: var(--space-2) var(--space-3);
+    border-bottom: var(--border-width) solid var(--stone-150);
+    vertical-align: middle;
+  }
+  .table tbody tr:last-child td {
+    border-bottom: 0;
+  }
+  .table th.end {
+    text-align: right;
+  }
+  .table th.end .sort {
+    margin-left: auto;
+  }
+  td.end {
+    text-align: right;
+  }
+
+  /* Anchos: producto con mínimo garantizado (nombre + menú ⋮); cantidades y montos sin saltos de línea. */
+  .selectCell {
+    width: 2.75rem;
+    padding-right: 0 !important;
+  }
+  .table th:nth-child(2),
+  .table td:nth-child(2) {
+    min-width: 16.25rem;
+  }
+  .table th:nth-child(5),
+  .table td:nth-child(5) {
+    min-width: 10rem;
+  }
+  .table th.colSupplier,
+  .table td.colSupplier {
+    width: 14rem;
+    max-width: 14rem;
+  }
+  .nowrap {
+    white-space: nowrap;
+  }
+  .unit {
+    color: var(--color-text-muted);
+    font-size: var(--text-xs);
+  }
+  .muted {
+    color: var(--color-text-muted);
+  }
+
+  .sort {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-1);
+    height: 100%;
+    padding: 0;
+    border: 0;
+    border-radius: var(--radius-xs);
+    background: none;
+    font: inherit;
+    color: inherit;
+  }
+  th[aria-sort='ascending'] .sort,
+  th[aria-sort='descending'] .sort {
+    color: var(--color-text-primary);
+  }
+
+  .productCell {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-1);
+  }
+  .productText {
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+  .kebab {
+    margin: calc(var(--space-1) * -1) calc(var(--space-2) * -1) 0 0;
+  }
+  .name {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    overflow: hidden;
+    overflow-wrap: anywhere;
+    font-weight: var(--weight-medium);
+  }
+  .nameButton {
+    display: block;
+    width: 100%;
+    padding: 0;
+    border: 0;
+    border-radius: var(--radius-xs);
+    background: none;
+    text-align: left;
+    font: inherit;
+    color: inherit;
+  }
+  .code {
+    margin-top: 2px;
+    color: var(--color-text-muted);
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    line-height: var(--leading-xs);
+    overflow-wrap: anywhere;
+  }
+  .supplierNarrow {
+    /* width:0 + min-width:100%: el texto sin saltos no aporta ancho intrínseco a la columna (solo se recorta con puntos suspensivos). */
+    display: block;
+    width: 0;
+    min-width: 100%;
+    margin-top: 2px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: var(--color-text-muted);
+    font-size: var(--text-xs);
+    line-height: var(--leading-xs);
+  }
+  .supplier {
+    display: block;
+    max-width: 14rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .future {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-1);
+    margin-top: 2px;
+    color: var(--color-warning-fg);
+    font-size: var(--text-xs);
+    line-height: var(--leading-xs);
+    font-weight: var(--weight-medium);
+  }
+  .future svg {
+    flex: none;
+    margin-top: 1px;
+  }
+
+  .selected td {
+    background: var(--color-bg-selected);
+  }
+  .active td {
+    background: var(--color-bg-subtle);
+  }
+  .active.selected td {
+    background: var(--color-bg-selected);
+  }
+  .active td:first-child {
+    box-shadow: inset 3px 0 0 var(--color-border-focus);
+  }
+  @media (hover: hover) and (pointer: fine) {
+    .table tbody tr {
+      cursor: pointer;
+    }
+    .table tbody tr:hover td {
+      background: var(--color-bg-hover);
+    }
+    .table tbody tr.selected:hover td {
+      background: var(--color-bg-selected);
+    }
+  }
+
+  /*
+   * Columnas opcionales según el ANCHO DEL CONTENEDOR (no del contenido): no aparecen ni desaparecen al paginar.
+   * Cuando no caben, el proveedor y la marca de fecha futura pasan a la celda de producto.
+   */
+  .colSupplier,
+  .colUpdated {
+    display: none;
+  }
+  .futureNarrow {
+    display: block;
+  }
+  @container inventory (min-width: 58rem) {
+    .colSupplier {
+      display: table-cell;
+    }
+    .supplierNarrow {
+      display: none;
+    }
+  }
+  @container inventory (min-width: 68.5rem) {
+    .colUpdated {
+      display: table-cell;
+    }
+    .futureNarrow {
+      display: none;
+    }
+  }
+}

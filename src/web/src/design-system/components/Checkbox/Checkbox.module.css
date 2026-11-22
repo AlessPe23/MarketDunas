@@ -1,0 +1,22 @@
+@layer components {
+  .wrap {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2);
+    min-width: var(--control-h);
+    min-height: var(--control-h);
+    cursor: pointer;
+  }
+  .input {
+    width: 1rem;
+    height: 1rem;
+    margin: 0;
+    accent-color: var(--oasis-600);
+    cursor: pointer;
+  }
+  .text {
+    font-size: var(--text-md);
+    color: var(--color-text-primary);
+  }
+}

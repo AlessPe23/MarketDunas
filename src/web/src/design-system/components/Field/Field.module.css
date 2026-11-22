@@ -1,0 +1,47 @@
+@layer components {
+  .field {
+    display: grid;
+    gap: var(--space-1);
+    min-width: 0;
+  }
+  .label {
+    font-size: var(--text-sm);
+    line-height: var(--leading-sm);
+    font-weight: var(--weight-medium);
+    color: var(--color-text-secondary);
+  }
+  .hint {
+    font-size: var(--text-xs);
+    line-height: var(--leading-xs);
+    color: var(--color-text-muted);
+  }
+  .error {
+    font-size: var(--text-xs);
+    line-height: var(--leading-xs);
+    color: var(--color-danger-fg);
+    font-weight: var(--weight-medium);
+  }
+
+  /* Superficie compartida por los controles de formulario. */
+  :global(.ds-control) {
+    width: 100%;
+    min-height: var(--control-h);
+    padding: 0 var(--space-3);
+    border: var(--border-width) solid var(--color-border-control);
+    border-radius: var(--radius-sm);
+    background: var(--color-bg-surface);
+    color: var(--color-text-primary);
+    font-size: var(--text-md);
+    line-height: var(--leading-md);
+  }
+  :global(.ds-control)::placeholder {
+    color: var(--color-text-muted);
+  }
+  :global(.ds-control)[aria-invalid='true'] {
+    border-color: var(--color-danger-fg);
+  }
+  :global(.ds-control):disabled {
+    opacity: var(--opacity-disabled);
+    cursor: not-allowed;
+  }
+}

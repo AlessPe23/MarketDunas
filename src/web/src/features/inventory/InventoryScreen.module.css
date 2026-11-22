@@ -1,0 +1,45 @@
+@layer features {
+  .screen {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-4);
+    min-width: 0;
+  }
+  .pageHeader {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: var(--space-3);
+  }
+  .sub {
+    color: var(--color-text-muted);
+  }
+  .layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-4);
+    align-items: start;
+  }
+  .docked {
+    grid-template-columns: minmax(0, 1fr) 22.5rem;
+  }
+  .main {
+    min-width: 0;
+  }
+  /* Contenedor de consulta: las columnas opcionales de la tabla dependen de su ancho (incluye el panel acoplado). */
+  .card {
+    container: inventory / inline-size;
+    background: var(--color-bg-surface);
+    border: var(--border-width) solid var(--color-border-subtle);
+    border-radius: var(--radius-md);
+  }
+  .resultsLine {
+    padding: var(--space-3) var(--space-4);
+    border-bottom: var(--border-width) solid var(--color-border-subtle);
+    color: var(--color-text-secondary);
+  }
+  .inconsistent {
+    color: var(--color-warning-fg);
+  }
+}

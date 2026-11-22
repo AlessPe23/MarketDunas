@@ -1,0 +1,19 @@
+@layer components {
+  .content {
+    z-index: var(--z-tooltip);
+    max-width: 18rem;
+    padding: var(--space-1) var(--space-2);
+    border-radius: var(--radius-sm);
+    background: var(--color-bg-inverse);
+    color: var(--color-text-inverse);
+    font-size: var(--text-xs);
+    line-height: var(--leading-xs);
+    transform-origin: var(--radix-tooltip-content-transform-origin);
+    animation: fade var(--dur-hover) var(--ease-out);
+  }
+  @keyframes fade {
+    from {
+      opacity: 0;
+    }
+  }
+}

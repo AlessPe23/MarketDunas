@@ -1,0 +1,42 @@
+@layer reset {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-padding-top: 5.5rem; /* cabecera de aplicación (3 rem) + cabecera fija de tabla (2.5 rem): no tapan el elemento enfocado */
+  }
+  body,
+  h1,
+  h2,
+  h3,
+  p,
+  figure,
+  dl,
+  dd {
+    margin: 0;
+  }
+  button,
+  input,
+  select,
+  textarea {
+    font: inherit;
+    color: inherit;
+    margin: 0;
+  }
+  button {
+    cursor: pointer;
+  }
+  img,
+  svg {
+    display: block;
+  }
+  ul[role='list'],
+  ol[role='list'] {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+}

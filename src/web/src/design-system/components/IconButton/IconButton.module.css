@@ -1,0 +1,44 @@
+@layer components {
+  .iconButton {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: none;
+    width: var(--control-h);
+    height: var(--control-h);
+    padding: 0;
+    border: var(--border-width) solid transparent;
+    border-radius: var(--radius-sm);
+    background: transparent;
+    color: var(--color-text-secondary);
+    transition:
+      background-color var(--dur-hover) ease,
+      transform var(--dur-press) var(--ease-out);
+  }
+  .secondary {
+    border-color: var(--color-border-control);
+    background: var(--color-bg-surface);
+    color: var(--color-text-primary);
+  }
+  .glyph {
+    display: inline-flex;
+  }
+  .iconButton:active:not(:disabled) {
+    transform: scale(0.95);
+  }
+  .iconButton:disabled {
+    opacity: var(--opacity-disabled);
+    cursor: not-allowed;
+  }
+  @media (hover: hover) and (pointer: fine) {
+    .iconButton:hover:not(:disabled) {
+      background: var(--color-bg-hover);
+      color: var(--color-text-primary);
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .iconButton:active:not(:disabled) {
+      transform: none;
+    }
+  }
+}

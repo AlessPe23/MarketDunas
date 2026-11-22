@@ -1,0 +1,62 @@
+@layer base {
+  html {
+    font-size: 100%;
+  }
+  body {
+    background: var(--color-bg-app);
+    color: var(--color-text-primary);
+    font: var(--weight-regular) var(--text-md) / var(--leading-md) var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  h1 {
+    font-size: var(--text-xl);
+    line-height: var(--leading-xl);
+    font-weight: var(--weight-semibold);
+    letter-spacing: -0.01em;
+  }
+  h2 {
+    font-size: var(--text-lg);
+    line-height: var(--leading-lg);
+    font-weight: var(--weight-semibold);
+  }
+  a {
+    color: var(--color-text-link);
+  }
+  code,
+  kbd,
+  samp {
+    font-family: var(--font-mono);
+  }
+
+  /* Foco visible: anillo doble. El contorno transparente se hace visible en modo de colores forzados. */
+  :focus-visible {
+    outline: 2px solid transparent;
+    box-shadow: var(--focus-ring);
+  }
+
+  /* Cifras tabulares para cantidades y montos. */
+  .num {
+    font-variant-numeric: tabular-nums;
+  }
+
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      scroll-behavior: auto !important;
+    }
+  }
+}

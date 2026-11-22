@@ -424,3 +424,17 @@ FodyWeavers.xsd
 
 # Official VS Code C# Dev Kit Extension exclusion
 #*.lscache
+
+# ── MarketDunas: frontend (React + Vite) ──
+# Variables de entorno: nunca versionar valores reales. Solo se permite la plantilla *.example.
+.env
+.env.*
+!.env.example
+!.env.*.example
+# Compilación y artefactos de prueba
+src/web/dist/
+src/web/playwright-report/
+src/web/test-results/
+src/web/node_modules/.tmp/
+*.tsbuildinfo
+*.log

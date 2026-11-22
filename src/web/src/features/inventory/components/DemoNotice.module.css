@@ -1,0 +1,23 @@
+@layer features {
+  .notice {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: var(--space-3);
+    padding: var(--space-3) var(--space-4);
+    background: var(--color-bg-subtle);
+    border: var(--border-width) solid var(--color-border-subtle);
+    border-radius: var(--radius-md);
+    font-size: var(--text-sm);
+    color: var(--color-text-secondary);
+  }
+  .controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+  }
+  .controls > * {
+    min-width: 11rem;
+  }
+}

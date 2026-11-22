@@ -1,0 +1,111 @@
+@layer components {
+  .overlay {
+    position: fixed;
+    inset: 0;
+    z-index: var(--z-overlay);
+    background: rgb(30 27 23 / 0.4);
+    animation: fade var(--dur-pop) var(--ease-out);
+  }
+  .content {
+    position: fixed;
+    z-index: var(--z-dialog);
+    display: flex;
+    flex-direction: column;
+    max-height: 100dvh;
+    background: var(--color-bg-surface);
+    border: var(--border-width) solid var(--color-border-subtle);
+    box-shadow: var(--shadow-dialog);
+  }
+  .modal {
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    width: min(32rem, calc(100vw - var(--space-8)));
+    max-height: calc(100dvh - var(--space-8));
+    border-radius: var(--radius-lg);
+    animation: pop var(--dur-dialog) var(--ease-out);
+  }
+  .sheet,
+  .drawer {
+    top: 0;
+    bottom: 0;
+    width: min(26.25rem, 92vw);
+    border-radius: 0;
+    animation: slide-from-right var(--dur-dialog) var(--ease-drawer);
+  }
+  .sheet {
+    right: 0;
+    border-width: 0 0 0 var(--border-width);
+  }
+  .drawer {
+    left: 0;
+    width: min(18rem, 88vw);
+    border-width: 0 var(--border-width) 0 0;
+    animation-name: slide-from-left;
+  }
+  .header {
+    flex: none;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: var(--space-2);
+    padding: var(--space-4);
+    border-bottom: var(--border-width) solid var(--color-border-subtle);
+  }
+  .title {
+    min-width: 0;
+    overflow-wrap: anywhere;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    overflow: hidden;
+  }
+  .description {
+    padding: var(--space-3) var(--space-4) 0;
+    color: var(--color-text-muted);
+    font-size: var(--text-sm);
+  }
+  .body {
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow-y: auto;
+    padding: var(--space-4);
+  }
+  .footer {
+    flex: none;
+    display: grid;
+    gap: var(--space-2);
+    padding: var(--space-3) var(--space-4);
+    border-top: var(--border-width) solid var(--color-border-subtle);
+  }
+
+  @keyframes fade {
+    from {
+      opacity: 0;
+    }
+  }
+  @keyframes pop {
+    from {
+      opacity: 0;
+      scale: 0.97;
+    }
+  }
+  @keyframes slide-from-right {
+    from {
+      transform: translateX(100%);
+    }
+  }
+  @keyframes slide-from-left {
+    from {
+      transform: translateX(-100%);
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .modal,
+    .sheet,
+    .drawer {
+      animation: fade var(--dur-pop) ease;
+    }
+  }
+}

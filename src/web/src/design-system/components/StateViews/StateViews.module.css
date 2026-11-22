@@ -1,0 +1,50 @@
+@layer components {
+  .state {
+    display: grid;
+    justify-items: center;
+    gap: var(--space-2);
+    padding: var(--space-12) var(--space-4);
+    text-align: center;
+  }
+  .icon,
+  .iconDanger {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: var(--radius-full);
+  }
+  .icon {
+    background: var(--color-neutral-bg);
+    color: var(--color-neutral-fg);
+  }
+  .iconDanger {
+    background: var(--color-danger-bg);
+    color: var(--color-danger-fg);
+  }
+  .title {
+    max-width: 32rem;
+    overflow-wrap: anywhere;
+  }
+  .description {
+    max-width: 32rem;
+    color: var(--color-text-muted);
+    overflow-wrap: anywhere;
+  }
+  .action {
+    margin-top: var(--space-2);
+  }
+  .loading {
+    display: grid;
+  }
+  .skeletonRow {
+    display: grid;
+    grid-template-columns: 1.5rem 2fr 1fr 1fr;
+    align-items: center;
+    gap: var(--space-4);
+    min-height: var(--row-h);
+    padding: 0 var(--space-4);
+    border-bottom: var(--border-width) solid var(--color-border-subtle);
+  }
+}
